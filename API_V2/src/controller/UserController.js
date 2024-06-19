@@ -1,5 +1,6 @@
 import User from "../models/UserModel.js";
 import { faker } from "@faker-js/faker";
+import jwt from 'jsonwebtoken';
 
 export const createUser = async (req, res) => {
     try {
@@ -11,11 +12,13 @@ export const createUser = async (req, res) => {
             UserStatus_FK: dataUser.status,
             role_FK: dataUser.role
         });
+        const token = jwt.sign({email: createUser.user_user}, process.env.JWK_SECRET, {expiresIn: "1h"});
         res.status(201).json({
             ok: true,
             status: 201,
             message: 'Create User',
-            id: createUser.user_id
+            id: createUser.user_id,
+            token:token
         });
     } catch (error) {
         return res.status(500).json({

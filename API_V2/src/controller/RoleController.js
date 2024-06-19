@@ -6,7 +6,7 @@ export const createRole = async (req, res) => {
         const dataRole = req.body;
         const createRole = await Role.create({
             role_name: dataRole.role_name,
-            role_descriptions: dataRole.description,
+            role_descriptions: dataRole.role_descriptions,
         });
         res.status(201).json({
             ok: true,
@@ -70,7 +70,7 @@ export const updateRole = async (req, res) => {
         const idRole = req.params.id;
         const updateRole = await Role.update({
             role_name: dataRole.role_name,
-            role_descriptions: dataRole.description
+            role_descriptions: dataRole.role_descriptions
         },{
             where: {
                 role_id: idRole
