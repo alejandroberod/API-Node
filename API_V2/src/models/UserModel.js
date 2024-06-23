@@ -1,5 +1,7 @@
 import sequelize from "../config/connect.db.js";
 import { Model, DataTypes } from "sequelize";
+import UserStatus from "./UserStatusModel.js";
+import Role from "./RoleModel.js";
 
 class User extends Model{};
 
@@ -17,6 +19,20 @@ User.init({
     user_password: {
         type: DataTypes.STRING,
         allowNull: false
+    },
+    userStatus_FK: {
+        type: DataTypes.INTEGER,
+        references: {
+            model: UserStatus,
+            key: 'id'
+        }
+    },
+    role_FK: {
+        type: DataTypes.INTEGER,
+        references: {
+            model: Role,
+            key: 'id'
+        }
     }
 }, {sequelize, modelName: "User"});
 
