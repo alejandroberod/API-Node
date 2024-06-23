@@ -16,7 +16,7 @@ export const createRole = async (req, res) => {
         });
     } catch (error) {
         return res.status(500).json({
-            message: "Something went wrong in the request",
+            message: `Something went wrong in the request ${error}`,
             status: 500
         });
     }
@@ -34,7 +34,7 @@ export const showRole = async (req,res) => {
         });
     } catch (error) {
         return res.status(500).json({
-            message: "Something went wrong in the request",
+            message: `Something went wrong in the request ${error}`,
             status: 500
         });
     }
@@ -57,7 +57,7 @@ export const showIdRole = async (req, res) => {
         });
     } catch (error) {
         return res.status(500).json({
-            message: "Something went wrong in the request",
+            message: `Something went wrong in the request ${error}`,
             status: 500
         })
     }
@@ -84,7 +84,7 @@ export const updateRole = async (req, res) => {
         });
     } catch (error) {
         return res.status(500).json({
-            message: "Something went wrong in the request",
+            message: `Something went wrong in the request ${error}`,
             status: 500
         })
     }
@@ -107,7 +107,7 @@ export const deleteRole = async (req, res) => {
         });
     } catch (error) {
         return res.status(500).json({
-            message: "Something went wrong in the request",
+            message: `Something went wrong in the request ${error}`,
             status: 500
         });
     }

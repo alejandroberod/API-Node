@@ -30,7 +30,7 @@ Products.init({
         type: DataTypes.INTEGER,
         references: {
             model: Mark,
-            key: 'id'
+            key: 'mark_id'
         }
     }
 }, {sequelize, modelName: "Products"});

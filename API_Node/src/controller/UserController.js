@@ -15,17 +15,15 @@ export const createUser = async (req, res) => {
             userStatus_FK: dataUser.status,
             role_FK: dataUser.role
         });
-        const token = jwt.sign({email: createUser.user_user}, "KEY", {expiresIn: "1h"});
         res.status(201).json({
             ok: true,
             status: 201,
             message: 'Create User',
             id: createUser.user_id,
-            token
         });
     } catch (error) {
         return res.status(500).json({
-            message: "Something went wrong in the request",
+            message: `Something went wrong in the request ${error}`,
             status: 500
         });
     }
@@ -42,7 +40,7 @@ export const showUser = async (req,res) => {
         });
     } catch (error) {
         return res.status(500).json({
-            message: "Something went wrong in the request",
+            message: `Something went wrong in the request ${error}`,
             status: 500
         });
     }
@@ -64,7 +62,7 @@ export const showUserId = async (req, res) => {
         });
     } catch (error) {
         return res.status(500).json({
-            message: "Something went wrong in the request",
+            message: `Something went wrong in the request ${error}`,
             status: 500
         })
     }
@@ -75,9 +73,10 @@ export const updateUser = async (req, res) => {
         await User.sync();
         const dataUser = req.body;
         const idUser = req.params.id;
+        const passwordHash = await bcryptjs.hash(dataUser.user_password, salt);
         const updateUser = await User.update({
             user_user: dataUser.user_name,
-            user_password: dataUser.user_password,
+            user_password: passwordHash,
             userStatus_FK: dataUser.status,
             role_FK: dataUser.role
         },{
@@ -93,7 +92,7 @@ export const updateUser = async (req, res) => {
         });
     } catch (error) {
         return res.status(500).json({
-            message: "Something went wrong in the request",
+            message: `Something went wrong in the request ${error}`,
             status: 500
         })
     }
@@ -116,7 +115,7 @@ export const deleteUser = async (req, res) => {
         });
     } catch (error) {
         return res.status(500).json({
-            message: "Something went wrong in the request",
+            message: `Something went wrong in the request ${error}`,
             status: 500
         });
     }
@@ -139,7 +138,7 @@ export const createUserFK = async (req, res) => {
         });
     } catch (error) {
         return res.status(500).json({
-            message: "Something went wrong in the request",
+            message: `Something went wrong in the request ${error}`,
             status: 500
         });
     }

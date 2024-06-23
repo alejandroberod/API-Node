@@ -15,7 +15,7 @@ export const createUserStatus = async (req, res) => {
         });
     } catch (error) {
         return res.status(500).json({
-            message: "Something went wrong in the request",
+            message: `Something went wrong in the request ${error}`,
             status: 500
         });
     }
@@ -32,7 +32,7 @@ export const showUserStatus = async (req,res) => {
         });
     } catch (error) {
         return res.status(500).json({
-            message: "Something went wrong in the request",
+            message: `Something went wrong in the request ${error}`,
             status: 500
         });
     }
@@ -54,7 +54,7 @@ export const showUserStatusId = async (req, res) => {
         });
     } catch (error) {
         return res.status(500).json({
-            message: "Something went wrong in the request",
+            message: `Something went wrong in the request ${error}`,
             status: 500
         })
     }
@@ -81,7 +81,7 @@ export const updateUserStatus = async (req, res) => {
         });
     } catch (error) {
         return res.status(500).json({
-            message: "Something went wrong in the request",
+            message: `Something went wrong in the request ${error}`,
             status: 500
         })
     }
@@ -104,7 +104,7 @@ export const deleteUserStatus = async (req, res) => {
         });
     } catch (error) {
         return res.status(500).json({
-            message: "Something went wrong in the request",
+            message: `Something went wrong in the request ${error}`,
             status: 500
         });
     }

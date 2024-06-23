@@ -24,14 +24,14 @@ User.init({
         type: DataTypes.INTEGER,
         references: {
             model: UserStatus,
-            key: 'id'
+            key: 'userStatus_id'
         }
     },
     role_FK: {
         type: DataTypes.INTEGER,
         references: {
             model: Role,
-            key: 'id'
+            key: 'role_id'
         }
     }
 }, {sequelize, modelName: "User"});

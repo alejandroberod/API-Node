@@ -10,7 +10,7 @@ ProductsImages.init({
         autoIncrement: true,
         primaryKey: true
     },
-    productImage_image: {
+    productImage_url: {
         type: DataTypes.STRING,
         allowNull: false
     },
@@ -22,7 +22,7 @@ ProductsImages.init({
         type: DataTypes.INTEGER,
         references: {
             model: Products,
-            key: 'id'
+            key: 'product_id'
         }
     }
 }, {sequelize, modelName: "ProductsImages"});

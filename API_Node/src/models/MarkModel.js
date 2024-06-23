@@ -14,6 +14,10 @@ Mark.init({
         allowNull: false, 
         unique: true
     },
+    mark_description: {
+        type: DataTypes.STRING,
+        allowNull: false, 
+    },
 }, {sequelize, modelName: "Mark"});
 
 export default Mark;
