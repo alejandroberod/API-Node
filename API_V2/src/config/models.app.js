@@ -6,18 +6,19 @@ import User from "../models/UserModel.js";
 export const modelsApp = function initModels(select) {
     if(select) {
         UserStatus.hasMany(User, {
-            foreignkey: {
+            foreignKey: {
                 name: "userStatus_FK", 
                 field: "userStatus_FK", 
                 allowNull: true
             }
         });
         User.belongsTo(UserStatus, {
-            foreignkey: {
+            foreignKey: {
                 name: "userStatus_FK",
                 field: "userStatus_FK", 
                 allowNull: true
-            }
+            },
+            constraints: true
         });
         Role.hasMany(User, {
             foreignKey: {
@@ -27,11 +28,13 @@ export const modelsApp = function initModels(select) {
             }
         });
         User.belongsTo(Role, {
-            foreignkey: {
+            as: 'Current',
+            foreignKey: {
                 name: "role_FK",
                 field: "role_FK", 
                 allowNull: true
-            }
+            },
+            constraints: true
         });
         sequelize.sync();
     }
